@@ -8,6 +8,7 @@ class App extends Component {
             title: '',
             description:'',
             tasks: [],
+            observations: '',
             _id: ''
         };
         this.handleChange = this.handleChange.bind(this);
@@ -28,7 +29,7 @@ class App extends Component {
                 .then(data => {
                     console.log(data)
                     M.toast({html: 'Task Updated'})
-                    this.setState({title:'', description: '', _id: ''})
+                    this.setState({title:'', description: '', observations: '', _id: ''})
                     this.fetchTasks();
                 });
             } else {
@@ -43,7 +44,7 @@ class App extends Component {
                     .then(res => res.json())
                     .then(data => {
                         M.toast({html: 'Task Saved'})//Mensaje en pantalla
-                        this.setState({title: '' , description: ''})
+                        this.setState({title: '' , description: '', observations:''})
                         this.fetchTasks();
                     })
                     .catch(err => console.log(err));
@@ -90,6 +91,7 @@ class App extends Component {
             this.setState({
                 title: data.title,
                 description: data.description,
+                observations: data.observations,
                 _id: data._id
             }),
             )
@@ -108,7 +110,7 @@ class App extends Component {
                 {/*NAVIGATION*/}
                 <nav className="light-blue darken-4">
                     <div className="container">
-                        <a className="brand-logo" href="/">MERN Stack</a>
+                        <a className="brand-logo" href="/">MERN Stack V2</a>
                     </div>
                 </nav>
                 <div className= "container">
@@ -127,6 +129,10 @@ class App extends Component {
                                                 <textarea name="description" onChange={this.handleChange} placeholder="Task Description"
                                                 className="materialize-textarea" value={this.state.description}></textarea>                
                                             </div>
+                                            <div className="input-field col s12">
+                                                <textarea name="observations" onChange={this.handleChange} placeholder="Task Observations"
+                                                className="materialize-textarea" value={this.state.observations}></textarea>                
+                                            </div>
                                         </div>
                                         <button type="submit" className="btn light-blue darken-4">
                                             Send
@@ -141,6 +147,7 @@ class App extends Component {
                                     <tr>
                                         <th> Title</th>
                                         <th>Description</th>
+                                        <th>Observations</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -150,6 +157,7 @@ class App extends Component {
                                                 <tr key={task._id}>
                                                     <td>{task.title}</td>
                                                     <td>{task.description}</td>
+                                                    <td>{task.observations}</td>
                                                     <td>
                                                         <button className="btn light-blue darken-4" style={{margin: "4px"}} 
                                                         onClick= {() => this.deleteTask (task._id)}>
