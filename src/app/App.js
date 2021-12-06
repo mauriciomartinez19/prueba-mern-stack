@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import {Dropdown} from 'react-bootstrap';
 
 class App extends Component {
-
+//app
     constructor() {
-        super(); // con esto heredo todas las funcionalidades del componente
+        super(); // con esto heredo todas las funcionalidades del Componente
         this.state = {
             title: '',
             description:'',
