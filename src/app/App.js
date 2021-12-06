@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {Dropdown} from 'react-bootstrap';
 
 class App extends Component {
 
@@ -174,9 +175,19 @@ class App extends Component {
                                 </tbody>
                             </table>
                         </div>
+                        <div>
+                            <p>
+                            <div>
+                            <button className="btn light-blue darken-4" style={{marginTop: '20px'}}>
+                            <i className='material-icons'>image</i>
+                            </button>
+                            </div>
+                            </p>
+                        </div>
+
                     </div>
                 </div>
-
+                
 
             </div>
         )
